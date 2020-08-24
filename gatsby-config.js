@@ -5,13 +5,13 @@ const pluginConfigFactory = require('@brainhubeu/gatsby-docs-kit/plugins');
 
 module.exports = {
   siteMetadata: {
-    title: 'Brainhub template',
-    description: 'Default template for open-source libraries',
-    image: 'https://cdn-images-1.medium.com/max/1200/1*CLUFZFaXF6NG27NA3d_JkQ.jpeg',
-    url: 'https://brainhubeu.github.io/gatsby-docs-kit/',
+    title: 'TypeScript Handbook in Russian',
+    description: 'TypeScript',
+    image: 'https://www.typescriptlang.org/icons/icon-48x48.png?v=e0cca9b778c3248c7434bc3c68c0e8b2',
+    url: 'https://rrrshtt.github.io/typescriptlang-ru',
     type: 'article',
-    siteName: 'Brainhub template',
-    githubUrl: 'https://github.com/brainhubeu',
+    siteName: 'TypeScript Handbook in Russian',
+    githubUrl: 'https://github.com/rrrshtt/typescriptlang-ru',
   },
 
   // URL prefix on production environment. For more info see https://www.gatsbyjs.org/docs/path-prefix/
