@@ -1,24 +1,94 @@
-const path = require('path');
-
-// eslint-disable-next-line import/no-unresolved
-const pluginConfigFactory = require('@brainhubeu/gatsby-docs-kit/plugins');
-
 module.exports = {
   siteMetadata: {
-    title: 'Brainhub template',
-    description: 'Default template for open-source libraries',
-    image: 'https://cdn-images-1.medium.com/max/1200/1*CLUFZFaXF6NG27NA3d_JkQ.jpeg',
-    url: 'https://brainhubeu.github.io/gatsby-docs-kit/',
-    type: 'article',
-    siteName: 'Brainhub template',
-    githubUrl: 'https://github.com/brainhubeu',
+    title: 'TypeScript Handbook in Russian',
   },
-
-  // URL prefix on production environment. For more info see https://www.gatsbyjs.org/docs/path-prefix/
-  pathPrefix: process.env.PATH_PREFIX || '',
-
-  plugins: pluginConfigFactory({
-    config: `${__dirname}/gatsby-docs-kit.yml`,
-    resources: path.resolve(__dirname, './docs'),
-  }),
-};
+  plugins: [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `menuItems`,
+        path: `${__dirname}/src/menuItems`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `sidebar`,
+        path: `${__dirname}/src/sidebar`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `contents`,
+        path: `${__dirname}/contents`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'gatsby-starter-markdown',
+        short_name: 'starter',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [ `gatsby-remark-images` ],
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve('./src/Layout.tsx'),
+        },
+        extensions: ['.mdx', '.md'],
+        // workaround: https://github.com/gatsbyjs/gatsby/issues/16422#issuecomment-518985316
+        plugins: [`gatsby-remark-autolink-headers`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-katex`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035,
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
+    `gatsby-plugin-remove-trailing-slashes`,
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.app/offline
+    // 'gatsby-plugin-offline',
+  ],
+  /// this must match the path your webpage is displayed from
+  pathPrefix: process.env.NODE_ENV === 'development' ? '' : '/gatsby-antd-docs',
+}
