@@ -1,8 +1,8 @@
 {
-  "name": "starter",
-  "description": "Gatsby-Docs-Kit starter repository",
-  "version": "0.0.20",
-  "author": "Brainhub",
+  "name": "typescriptlang-ru",
+  "description": "free translation into russian of the typescript handbook",
+  "version": "0.0.1",
+  "author": "rrrshtt",
   "license": "MIT",
   "scripts": {
     "build": "gatsby clean && rm -rf public && gatsby build --prefix-paths",
