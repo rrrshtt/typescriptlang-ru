@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -9,4 +10,4 @@
 module.exports = {
   createPages: require('./gatsby/createPages'),
   onCreateNode: require('./gatsby/onCreateNode'),
-}
+};

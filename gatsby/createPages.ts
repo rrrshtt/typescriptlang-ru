@@ -1,10 +1,12 @@
-const replacePath = require('./utils')
-const path = require('path')
+import replacePath from 'gatsby/utils';
 
+const path = require('path');
+
+// eslint-disable-next-line no-multi-assign
 module.exports = exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const Template = path.resolve(`src/templates/template.tsx`)
+  const Template = path.resolve('src/templates/template.tsx');
 
   // sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000
   return graphql(`
@@ -20,16 +22,17 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
-      return Promise.reject(result.errors)
+      return Promise.reject(result.errors);
     }
     result.data.allMdx.edges.forEach(({ node }) => {
       createPage({
         path: replacePath(node.fields.slug),
         component: Template,
         context: { id: node.id }, // additional data can be passed via context
-      })
-    })
-  })
-}
+      });
+    });
+    return Promise.resolve;
+  });
+};

@@ -1,14 +1,14 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { RootLayout as Layout } from '../Layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import RootLayout from './Layout';
 
 function PageTemplate({ data: { mdx } }: any) {
   return (
-    <Layout sidebarRoot={mdx.frontmatter.root}>
+    <RootLayout sidebarRoot={mdx.frontmatter.root}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
-    </Layout>
-  )
+    </RootLayout>
+  );
 }
 export const pageQuery = graphql`
   query BlogPostQuery($id: String) {
@@ -21,5 +21,5 @@ export const pageQuery = graphql`
       body
     }
   }
-`
-export default PageTemplate
+`;
+export default PageTemplate;

@@ -1,18 +1,18 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Card from 'antd/lib/card'
-import 'antd/lib/card/style/css'
+import React from 'react';
+import { Link } from 'gatsby';
+import Card from 'antd/lib/card';
+import 'antd/lib/card/style/css';
 
-export const PostCard = ({ post }) => (
+const PostCard = ({ post }) => (
   <div>
     <Card
-      title={
+      title={(
         <div>
           <Link
             to={post.fields.slug}
             style={{ color: 'black', fontWeight: 'bold' }}
           >
-            {post.frontmatter.title}
+            { post.frontmatter.title }
           </Link>
           <span
             style={{
@@ -20,13 +20,15 @@ export const PostCard = ({ post }) => (
               color: 'grey',
             }}
           >
-            {post.frontmatter.date}
+            { post.frontmatter.date }
           </span>
         </div>
-      }
+        )}
     >
-      {post.excerpt}
+      { post.excerpt }
     </Card>
     <br />
   </div>
-)
+);
+
+export default PostCard;

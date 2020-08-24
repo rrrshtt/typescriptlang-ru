@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
-import { Link } from 'gatsby'
-import { Menu, Row } from 'antd'
-import { GithubOutlined, TwitterOutlined } from '@ant-design/icons'
+import React, { Component } from 'react';
+import { Link } from 'gatsby';
+import { Menu, Row } from 'antd';
+import { GithubOutlined, TwitterOutlined } from '@ant-design/icons';
 
 interface Props {
   siteTitle: string
 }
 
-export class Header extends Component<Props> {
+// eslint-disable-next-line react/prefer-stateless-function
+export default class extends Component<Props> {
   render() {
-    const { siteTitle } = this.props
+    const { siteTitle } = this.props;
     return (
       <Row>
         <Menu mode="horizontal">
@@ -20,19 +21,20 @@ export class Header extends Component<Props> {
             <a
               href="https://github.com/jannikbuschke/gatsby-antd-docs"
               target="_blank"
+              rel="noreferrer"
             >
               <GithubOutlined />
               GitHub
             </a>
           </Menu.Item>
           <Menu.Item>
-            <a href="https://twitter.com/jannikbuschke" target="_blank">
+            <a href="https://twitter.com/jannikbuschke" target="_blank" rel="noreferrer">
               <TwitterOutlined />
               Twitter
             </a>
           </Menu.Item>
         </Menu>
       </Row>
-    )
+    );
   }
 }

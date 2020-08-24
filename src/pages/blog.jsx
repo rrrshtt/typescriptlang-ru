@@ -1,24 +1,24 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { RootLayout as Layout } from '../Layout'
-import { PostCard } from '../PostCard'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { RootLayout as Layout } from '../Layout';
+import PostCard from '../PostCard';
 
 const BlogPage = ({
   data: {
     allMdx: { edges },
   },
-}: any) => {
+}) => {
   const posts = edges
-    .filter((edge: any) => !!edge.node.frontmatter.date)
-    .map((edge: any) => <PostCard key={edge.node.id} post={edge.node} />)
+    .filter((edge) => !!edge.node.frontmatter.date)
+    .map((edge) => <PostCard key={edge.node.id} post={edge.node} />);
   return (
     <Layout>
       <div>{posts}</div>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;
 
 export const pageQuery = graphql`
   query($path: String!) {
@@ -41,4 +41,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
